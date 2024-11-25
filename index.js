@@ -227,7 +227,7 @@ app.get('/', async (req, res) => {
 
   try {
     const balances = [];
-    const batchSize = 3; // Number of requests per second
+    const batchSize = 1; // Number of requests per second
     let batch = [];
     
     // Helper function to fetch balance for a given address
