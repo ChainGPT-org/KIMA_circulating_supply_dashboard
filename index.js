@@ -363,10 +363,10 @@ app.get('/', async (req, res) => {
     }
   </style>
   
-  <h1>$CGPT Circulating Supply Tracker</h1>
+  <h1>$KIMA Circulating Supply Tracker</h1>
   <p>Total Supply: 210,000,000</p>
-  <p>Burnt $CGPT: ${burntTokens.toLocaleString()}</p>
-  <p>Live Circulating Supply of $CGPT: ${totalSupply.toLocaleString()} </p>
+  <p>Burnt $KIMA: ${burntTokens.toLocaleString()}</p>
+  <p>Live Circulating Supply of $KIMA: ${totalSupply.toLocaleString()} </p>
   <br><br>
   <table>
     <tr class="title-row">
@@ -381,7 +381,7 @@ app.get('/', async (req, res) => {
       <td colspan="5"></td>
     </tr>
     <tr class="total-supply-row">
-      <td>$CGPT Circulating Supply</td>
+      <td>$KIMA Circulating Supply</td>
       <td>${totalSupply.toLocaleString()}</td>
       <td></td>
       <td></td>
