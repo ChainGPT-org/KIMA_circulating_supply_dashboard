@@ -10,10 +10,10 @@ const port = 3000;
 // BSCSCAN API Key (ENV)
 const apiKey = process.env.BSCSCAN_API_KEY;
 
-// Contract address of CGPT token (ENV)
+// Contract address of KIMA token (ENV)
 const cgptContractAddress = process.env.CGPT_CONTRACT_ADDRESS;
 
-// Maximum Supply of CGPT token (ENV)
+// Maximum Supply of KIMA token (ENV)
 const MaxSupply = process.env.CGPT_MAX_SUPPLY;
 
 const cache = new NodeCache({ stdTTL: 600 }); // Set the cache expiration time to 600 seconds (10 minutes)
@@ -364,14 +364,14 @@ app.get('/', async (req, res) => {
   </style>
   
   <h1>$CGPT Circulating Supply Tracker</h1>
-  <p>Total Supply: 1,000,000,000</p>
+  <p>Total Supply: 210,000,000</p>
   <p>Burnt $CGPT: ${burntTokens.toLocaleString()}</p>
   <p>Live Circulating Supply of $CGPT: ${totalSupply.toLocaleString()} </p>
   <br><br>
   <table>
     <tr class="title-row">
       <th>Contract Address</th>
-      <th>Balance (CGPT)</th>
+      <th>Balance (KIMA)</th>
       <th>Chain</th>
       <th>Type</th>
       <th>Name</th>
