@@ -227,28 +227,42 @@ app.get('/', async (req, res) => {
 
   try {
     const balances = [];
-
-    for (const { address, chain, type, wallet, name } of contractAddresses) {
-      
-        await new Promise(resolve => setTimeout(resolve, 250));
-
+    const batchSize = 3; // Number of requests per second
+    let batch = [];
+    
+    // Helper function to fetch balance for a given address
+    const fetchBalance = async ({ address, chain, type, wallet }) => {
       const url = `https://api.arbiscan.io/api?module=account&action=tokenbalance&contractaddress=${cgptContractAddress}&address=${address}&tag=latest&apikey=${apiKey}`;
       const response = await axios.get(url);
       const balance = parseInt(response.data.result);
 
-      balances.push({ address, balance, chain, type, wallet, name });
+      balances.push({ address, balance, chain, type, wallet });
+    };
+
+    for (const addressData of contractAddresses) {
+      batch.push(fetchBalance(addressData));
+
+      if (batch.length === batchSize) {
+        await Promise.all(batch); // Process the current batch
+        batch = []; // Clear the batch
+        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+      }
+    }
+
+    // Process any remaining addresses
+    if (batch.length > 0) {
+      await Promise.all(batch);
     }
 
     balances.sort((a, b) => b.balance - a.balance); // Sort balances in descending order
 
     let totalBalance = 0;
-    
     let tableRows = '';
 
     for (const { address, balance, chain, type, wallet } of balances) {
       totalBalance += balance;
       const bscScanLink = `https://arbiscan.io/token/${cgptContractAddress}?a=${address}`;
- 
+
       tableRows += `<tr>
       <td><a href="${bscScanLink}" target="_blank">${address}</a></td>
         <td>${Math.floor(balance / 10 ** 18).toLocaleString()}</td>
