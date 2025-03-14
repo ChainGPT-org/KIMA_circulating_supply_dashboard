@@ -57,7 +57,7 @@ const contractAddresses = [
     wallet: 'Pre-Seed Round (ref: tokenomics)', 
   },
   {
-    address: '0xB8AB681556eF6d70653f8720A83ba61222E44823',
+    address: '0x4505CB4998ffe55455e7D399ee5cB53928DB4563',
     chain: 'Arbitrum',
     type: 'TeamFinance Vesting',
     wallet: 'Seed Round (ref: tokenomics)', 
